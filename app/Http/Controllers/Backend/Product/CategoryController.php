@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use App\Models\Backend\Product\Category;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -62,10 +63,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $gasStation, Request $request)
+    public function edit(Category $category, Request $request)
     {
 //        return view('backend.home-slider.create', ['homeSlider' => $homePageSlider]);
-        return view('backend.product.category.create', ['category' => $category, 'isShown' => true, 'category_id' => $request->category ?? 0]);
+        return view('backend.product.category.create', ['category' => $category, 'isShown' => false, 'category_id' => $request->get_category ?? 0]);
     }
 
     /**
@@ -82,7 +83,7 @@ class CategoryController extends Controller
                 $gasStation = Category::createOrUpdateCategory($request, Category::find($id));
 //                $gasStation->gasStationEmployeeRoles()->detach();
             });
-            Toastr::success('Gas Station updated successfully.');
+            Toastr::success('Product Category updated successfully.');
             return redirect(route('gas-stations.index'));
         } catch (\Exception $exception)
         {
@@ -99,6 +100,6 @@ class CategoryController extends Controller
 //        GasStationEmployee::find($id)->delete();
 
         $category->delete();
-        return back()->with('success', 'Castegory deleted successfully.');
+        return back()->with('success', 'Category deleted successfully.');
     }
 }

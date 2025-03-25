@@ -1,7 +1,7 @@
 @extends('backend.master')
 
-@section('title', 'Gas Stations')
-@section('breadcrumb', 'Gas Stations')
+@section('title', 'Categories')
+@section('breadcrumb', 'Categories')
 
 @section('body')
     <div class="container-fluid">
@@ -9,9 +9,9 @@
             <div class="col-12">
                 <div class="card card-hover">
                     <div class="card-header bg-info">
-                        <h4 class="text-white float-start">Gas Stations</h4>
+                        <h4 class="text-white float-start">Categories</h4>
 {{--                        @can('create-permission-category')--}}
-                            <a href="{{ isset($_GET['station']) ? route('gas-stations.create', ['station' => $_GET['station']]) : route('gas-stations.create') }}" class="rounded-circle float-end text-white text-light f-s-20 ">
+                            <a href="{{ isset($_GET['category']) ? route('categories.create', ['category' => $_GET['category']]) : route('categories.create') }}" class="rounded-circle float-end text-white text-light f-s-20 ">
                                 <span class="f-s-22 border-5"><i class="mdi mdi-plus-circle-outline"></i></span>
                             </a>
 {{--                        @endcan--}}
@@ -25,88 +25,41 @@
                                     <th>P. Status</th>
                                     <th>Name</th>
                                     <th>Images</th>
-                                    <th>Overview</th>
-                                    <th>Office Info</th>
-                                    <th>Social</th>
-{{--                                    <th>Location</th>--}}
-                                    <th>Key People</th>
-{{--                                    <th>SEO Header</th>--}}
-{{--                                    <th>SEO Footer</th>--}}
-{{--                                    <th>Slug</th>--}}
+                                    <th>Description</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($gasStations as $key => $gasStation)
+                                @foreach($categories as $key => $category)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $gasStation->gas_station_id == 0 ? 'Parent' : $gasStation->gasStation->name ?? '' }}</td>
-                                         <td><a href="{{ route('gas-stations.index', ['station' => $gasStation->id]) }}">{{ $gasStation->name ?? '' }}</a></td>
+                                        <td>{{ $category->category_id == 0 ? 'Parent' : $category->category->name ?? '' }}</td>
+                                         <td><a href="{{ route('categories.index', ['category' => $category->id]) }}">{{ $category->name ?? '' }}</a></td>
                                         <td>
-                                            <div>
-                                                <span>Logo: </span>
-                                                <a href="{{ asset($gasStation->logo ?? '') }}" target="_blank"><img src="{{ asset($gasStation->logo ?? '') }}" class="" alt="station-logo-{{ $key }}" style="height: 40px" /></a>
-                                            </div>
+
                                             <div class="mt-2">
-                                                <span>Main Image: </span>
-                                                <a href="{{ asset($gasStation->main_image ?? '') }}" target="_blank"><img src="{{ asset($gasStation->main_image ?? '') }}" class="" alt="station-main-image-{{ $key }}" style="height: 40px" /></a>
+                                                <a href="{{ asset($category->image ?? '') }}" target="_blank"><img src="{{ asset($category->image ?? '') }}" class="" alt="category-main-image-{{ $key }}" style="height: 40px" /></a>
                                             </div>
-                                            <div class="mt-2">
-                                                <span>Sub Images: </span>
-                                                @if(isset($gasStation->sub_images))
-                                                    @foreach(json_decode($gasStation->sub_images) as $index => $singleImage)
-                                                        <a href="{{ asset($singleImage ?? '') }}" class=""><img src="{{ asset($singleImage ?? '') }}" class="p-1" alt="station-sub-image-{{ $key }}" style="height: 40px" /></a>
-                                                    @endforeach
-                                                @endif
-                                            </div>
+
                                         </td>
-                                        <td>{!! str()->words(strip_tags($gasStation->overview), 30) ?? '' !!}</td>
-                                        <td>
-                                            <div>
-                                                <span>Phone: {{ $gasStation->office_phone_number }}</span> <br>
-                                                <span>Address: {!! $gasStation->office_address !!}</span> <br>
-                                            </div>
-                                            <div class="">
-                                                <p><span>State: {{ $gasStation->state }}</span>, <span>State Id: {{ $gasStation->state_id }}</span>, <span>Zip Code: {{ $gasStation->zip_code }}</span>, </p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p>
-                                                <span class="me-2"><a href="{{ $gasStation->fb ?? '' }}" target="_blank"><i class="fa fa-facebook-f"></i></a></span>
-                                                <span class="me-2"><a href="https://wa.me/{{ $gasStation->whatsapp ?? '' }}" target="_blank"><i class="fa fa-whatsapp"></i></a></span>
-                                                <span class="me-2"><a href="{{ $gasStation->insta ?? '' }}" target="_blank"><i class="fa fa-instagram"></i></a></span>
-                                                <span class="me-2"><a href="{{ $gasStation->telegram ?? '' }}" target="_blank"><i class="fa fa-telegram"></i></a></span>
-                                                <span class="me-2"><a href="{{ $gasStation->linkedin ?? '' }}" target="_blank"><i class="fa fa-linkedin"></i></a></span>
-                                                <span class="me-2"><a href="{{ $gasStation->skype ?? '' }}" target="_blank"><i class="fa fa-skype"></i></a></span>
-                                            </p>
-                                        </td>
-{{--                                        <td>--}}
-{{--                                            <div class="" style="height: 200px; width: 250px; overflow: hidden">--}}
-{{--                                                {!! $gasStation->location_map !!}--}}
-{{--                                            </div>--}}
-{{--                                        </td>--}}
-                                        <td>
-                                            {{ isset($gasStation->gasStationKeyPeople) ? $gasStation->gasStationKeyPeople->name : '' }}
-                                        </td>
-{{--                                        <td>{!! $gasStation->seo_header ?? '' !!}</td>--}}
-{{--                                        <td>{!! $gasStation->seo_footer ?? '' !!}</td>--}}
-{{--                                        <td>{{ $gasStation->slug ?? '' }}</td>--}}
-                                        <td>{{ $gasStation->status == 1 ? 'Published' : 'Unpublished' }}</td>
+                                        <td>{!! str()->words(strip_tags($category->description), 30) ?? '' !!}</td>
+
+                                        <td>{{ $category->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                         <td class="">
                                             {{--                                        @can('edit-permission-category')--}}
-                                            <a href="{{ route('gas-stations.index', ['station' => $gasStation->id]) }}" class="btn btn-sm btn-primary">
+                                            <a href="{{ route('categories.index', ['category' => $category->id]) }}" class="btn btn-sm btn-primary">
                                                 <i class="mdi mdi-arrow-all"></i>
                                             </a> <br>
-                                            <a href="{{ route('gas-stations.show', $gasStation->id) }}" class="btn btn-sm btn-primary mt-1">
+                                            <a href="{{ route('categories.show', $category->id) }}" class="btn btn-sm btn-primary mt-1">
                                                 <i class="mdi mdi-eye"></i>
                                             </a> <br>
-                                            <a href="{{ route('gas-stations.edit', ['gas_station' => $gasStation->id, 'station' => $gasStation->gas_station_id]) }}" class="btn btn-sm btn-warning mt-1">
+                                            <a href="{{ route('categories.edit', ['category' => $category->id, 'get_category' => $category->category_id]) }}" class="btn btn-sm btn-warning mt-1">
                                                 <i class="mdi mdi-square-edit-outline"></i>
                                             </a> <br>
                                             {{--                                        @endcan--}}
                                             {{--                                        @can('delete-permission-category')--}}
-                                            <form class="d-inline" action="{{ route('gas-stations.destroy', $gasStation->id) }}" method="post">
+                                            <form class="d-inline" action="{{ route('categories.destroy', $category->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-sm btn-danger delete-data mt-1">

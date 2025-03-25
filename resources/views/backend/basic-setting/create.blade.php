@@ -43,32 +43,32 @@
                                 <label for="">Site Moto</label>
                                 <textarea name="site_moto" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->site_moto : '' !!}</textarea>
                             </div>
-                            <div class="col-md-6">
-                                <label for="">Site Footer Info</label>
-                                <textarea name="site_description" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->site_description : '' !!}</textarea>
-                            </div>
+{{--                            <div class="col-md-6">--}}
+{{--                                <label for="">Site Footer Info</label>--}}
+{{--                                <textarea name="site_description" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->site_description : '' !!}</textarea>--}}
+{{--                            </div>--}}
                             <div class="col-md-6 mt-1">
                                 <label for="">Meta Description</label>
                                 <textarea name="meta_description" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->meta_description : '' !!}</textarea>
                             </div>
-                            <div class="col-md-6 mt-1">
-                                <label for="">Corporate Office Address</label>
-                                <textarea name="corporate_office" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->corporate_office : '' !!}</textarea>
-                            </div>
+{{--                            <div class="col-md-6 mt-1">--}}
+{{--                                <label for="">Corporate Office Address</label>--}}
+{{--                                <textarea name="corporate_office" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->corporate_office : '' !!}</textarea>--}}
+{{--                            </div>--}}
                         </div>
                         <div class="mt-2">
                             <label for="">Office Address</label>
                             <textarea name="address" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->address : '' !!}</textarea>
                         </div>
 
-                        <div class="mt-2">
-                            <label for="">SEO Header</label>
-                            <textarea name="seo_header" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->seo_header : '' !!}</textarea>
-                        </div>
-                        <div class="mt-2">
-                            <label for="">SEO Footer</label>
-                            <textarea name="seo_footer" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->seo_footer : '' !!}</textarea>
-                        </div>
+{{--                        <div class="mt-2">--}}
+{{--                            <label for="">SEO Header</label>--}}
+{{--                            <textarea name="seo_header" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->seo_header : '' !!}</textarea>--}}
+{{--                        </div>--}}
+{{--                        <div class="mt-2">--}}
+{{--                            <label for="">SEO Footer</label>--}}
+{{--                            <textarea name="seo_footer" {{ isset($isShown) ? 'disabled' : '' }} class="form-control" id="elm1" cols="30" rows="2">{!! isset($basicSetting) ? $basicSetting->seo_footer : '' !!}</textarea>--}}
+{{--                        </div>--}}
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label for="">FB Profile Link</label>

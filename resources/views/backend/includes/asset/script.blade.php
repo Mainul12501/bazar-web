@@ -19,14 +19,15 @@
 <script src="{{ asset('/') }}backend/dist/js/custom.min.js"></script>
 
 <script src="{{ asset('/') }}backend/dist/libs/toastr/toastr.min.js"></script>
+{!! Toastr::message() !!}
 <script>
-    toastr.options.progressBar = true;
-    @if(session()->has('success'))
-        toastr.success("{{ session('success') ?? 'success' }}");
-    <?php session()->forget('success') ?>
-    @elseif(session()->has('error'))
-        toastr.error("{{ session('error') }}");
-        <?php session()->forget('error') ?>
-    @endif
+    {{--toastr.options.progressBar = true;--}}
+    {{--@if(session()->has('success'))--}}
+    {{--    toastr.success("{{ session('success') ?? 'success' }}");--}}
+    {{--<?php session()->forget('success') ?>--}}
+    {{--@elseif(session()->has('error'))--}}
+    {{--    toastr.error("{{ session('error') }}");--}}
+    {{--    <?php session()->forget('error') ?>--}}
+    {{--@endif--}}
 </script>
 @stack('script')

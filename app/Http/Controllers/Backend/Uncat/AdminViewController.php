@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Uncat;
 
 use App\helper\ViewHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Backend\Product;
 use App\Models\Backend\Product\Category;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
@@ -18,7 +19,9 @@ class AdminViewController extends Controller
     public function dashboard()
     {
         return view('backend.dashboard.index',[
-            'total_categories'    => Category::all()->count(),
+            'total_categories'    => Category::all()->count() ?? 0,
+            'total_users'   => User::where(['role' => 'user'])->count() ?? 0,
+            'total_products'    => Product::where(['status' => 1])->count(),
         ]);
     }
 
@@ -27,7 +30,7 @@ class AdminViewController extends Controller
         try {
             $generate_otp = rand(1000, 9999);
             session()->put('otp', $generate_otp);
-//            SMS::shoot($request->mobile, 'Your OTP is '.$generate_otp);
+//            SMS::shoot($request->mobile, 'Your bestbuy OTP is '.$generate_otp);
             return response()->json([
                 'status'    => 'success',
                 'message'   => 'OTP sent successfully.',

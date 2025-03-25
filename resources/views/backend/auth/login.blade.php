@@ -68,7 +68,7 @@
                                 <div class="form-group mb-3">
                                     <div class="">
                                         {{--                                    <input class="form-control" type="text" name="mobile" required="" placeholder="Mobile">--}}
-                                        <input class="form-control" type="text" name="mobile" required="" placeholder="Mobile">
+                                        <input class="form-control" type="text" name="mobile" id="tb-rmobile" required="" placeholder="Mobile">
                                     </div>
                                 </div>
                                 <div class="form-group mb-4">
